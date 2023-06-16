@@ -23,12 +23,12 @@ jobs:
       #   run: ls && go mod init main
       - name: Tag the reposity
         run: git tag v0.0.1
-        
+
       - name: Initialize Goreleaser
         run: goreleaser init
 
       - name: Release with Goreleaser
-        run: goreleaser release --snapshot --clean
+        run: goreleaser release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
