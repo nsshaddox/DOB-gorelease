@@ -39,7 +39,7 @@ jobs:
         # on your needs.
 
         - name: Tag release
-          run: git tag v1.0.0
+          run: git tag v1.0.1
 
         - uses: goreleaser/goreleaser-action@v4
           with:
