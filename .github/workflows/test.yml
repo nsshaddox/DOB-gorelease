@@ -20,7 +20,7 @@ jobs:
         run: git clone https://github.com/nsshaddox/DOB-gorelease.git
 
       - name: Initialize Modules
-        run: cd DOB-releaase && go mod init main
+        run: pwd && ls && cd DOB-releaase && go mod init main
 
       # - name: Release with Goreleaser
       #   run: goreleaser release --snapshot --skip-publish --rm-dist
