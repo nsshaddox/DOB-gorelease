@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
     tags:
-      - 'v0.0.1'
+      - '*'
   pull_request:
     branches: [ main ]
 
@@ -37,6 +37,10 @@ jobs:
             go-version: stable
         # More assembly might be required: Docker logins, GPG, etc. It all depends
         # on your needs.
+
+        - name: Tag release
+          run: git tag v0.0.${{ github.run_number }}
+
         - uses: goreleaser/goreleaser-action@v4
           with:
             # either 'goreleaser' (default) or 'goreleaser-pro':
