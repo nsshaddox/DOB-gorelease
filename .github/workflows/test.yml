@@ -1,49 +1,12 @@
-name: Gobrew Build an publish
+name: GoReleaser in Action
 
 on:
   push:
     branches: [ main ]
-    tags:
-      - '*'
-  pull_request:
-    branches: [ main ]
-
-permissions:
-  contents: write
-  packages: write
-  # issues: write
 
 jobs:
   build:
-
     runs-on: self-hosted
-    env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
 
     steps:
-
-        # - name: Print current directory
-        #   run: pwd
-
-        # - name: Publish files to Github Release
-        #   run: goreleaser release --clean
-
         - uses: actions/checkout@v3
-          with:
-            fetch-depth: 0
-        - run: git fetch --force --tags
-        - uses: actions/setup-go@v4
-          with:
-            go-version: stable
-        # More assembly might be required: Docker logins, GPG, etc. It all depends
-        # on your needs.
-
-        - name: Tag release
-          run: git tag v1.0.1
-
-        - uses: goreleaser/goreleaser-action@v4
-          with:
-            # either 'goreleaser' (default) or 'goreleaser-pro':
-            distribution: goreleaser
-            version: latest
-            args: release --clean
