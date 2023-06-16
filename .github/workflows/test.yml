@@ -2,11 +2,30 @@ name: GoReleaser in Action
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+
+# permissions:
+#   contents: write
 
 jobs:
-  build:
+  goreleaser:
     runs-on: self-hosted
 
     steps:
-        - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Clone the repo
+        run: git clone https://github.com/nsshaddox/DOB-gorelease.git \
+              cd DOB-gorelease
+
+      - name: Initialize Modules
+        run: go mod init main
+        
+      # - name: Release with Goreleaser
+      #   run: goreleaser release --snapshot --skip-publish --rm-dist
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      
