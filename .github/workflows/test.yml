@@ -21,7 +21,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
-      - name: Remove the repo from the runner
-        run: |
-          cd ..
-          rm -rf DOB-gorelease
+      # - name: Remove the repo from the runner
+      #   run: |
+      #     cd ..
+      #     rm -rf DOB-gorelease
