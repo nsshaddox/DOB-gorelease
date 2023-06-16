@@ -19,12 +19,15 @@ jobs:
       - name: Clone the repo
         run: git clone https://github.com/nsshaddox/DOB-gorelease.git
 
-      - name: Initialize Modules
-        run: ls && go mod init main
+      # - name: Initialize Modules
+      #   run: ls && go mod init main
 
-      # - name: Release with Goreleaser
-      #   run: goreleaser release --snapshot --skip-publish --rm-dist
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Initialize Goreleaser
+        run: goreleaser init
+
+      - name: Release with Goreleaser
+        run: goreleaser release --snapshot --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       
