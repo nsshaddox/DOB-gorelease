@@ -17,12 +17,11 @@ jobs:
         uses: actions/checkout@v3
       
       - name: Clone the repo
-        run: git clone https://github.com/nsshaddox/DOB-gorelease.git \
-              cd DOB-gorelease
+        run: git clone https://github.com/nsshaddox/DOB-gorelease.git
 
       - name: Initialize Modules
-        run: go mod init main
-        
+        run: cd DOB-releaase && go mod init main
+
       # - name: Release with Goreleaser
       #   run: goreleaser release --snapshot --skip-publish --rm-dist
       #   env:
