@@ -1,0 +1,22 @@
+name: Gobrew Build an publish
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+    env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+
+    steps:
+
+        - name: Tag release
+          run: git tag v0.0.${{ github.run_number }}
+
+        - name: Publish files to Github Release
+          run: goreleaser release --clean
