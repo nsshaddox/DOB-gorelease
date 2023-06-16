@@ -22,7 +22,7 @@ jobs:
       # - name: Initialize Modules
       #   run: ls && go mod init main
       - name: Tag the reposity
-        run: git tag v0.0.1
+        run: git tag v0.0.2
 
       - name: Initialize Goreleaser
         run: goreleaser init
